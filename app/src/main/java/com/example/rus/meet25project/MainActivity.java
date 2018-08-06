@@ -16,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -68,7 +69,13 @@ public class MainActivity extends AppCompatActivity {
     private void setAdapter() {
         Log.v("tag", "here");
 
-        myAdapter = new MyAdapter(getGalleryImages(),this);
+        myAdapter = new MyAdapter(getGalleryImages(), this, new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, String uri) {
+                Intent intent = ScaleActivity.newIntent(getApplication(),uri);
+                getApplication().startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(myAdapter);
     }
 

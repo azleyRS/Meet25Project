@@ -18,10 +18,12 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<String> uriList;
     private Context context;
+    CustomItemClickListener listener;
 
-    MyAdapter(List<String> uriList, Context context) {
+    MyAdapter(List<String> uriList, Context context, CustomItemClickListener listener) {
         this.uriList = uriList;
         this.context = context;
+        this.listener = listener;
     }
 
     public void setAdapter(List<String> list){
@@ -56,8 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = ScaleActivity.newIntent(itemView.getContext(),uri);
-                    itemView.getContext().startActivity(intent);
+                    listener.onItemClick(v,uri);
                 }
             });
         }
