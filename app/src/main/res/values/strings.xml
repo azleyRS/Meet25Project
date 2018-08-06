@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Meet25Project</string>
+    <string name="change_view">Change view</string>
+    <string name="pager_view_title">Pager view</string>
+    <string name="scale_view_title">Scale view</string>
+</resources>
